@@ -741,7 +741,7 @@
 <h3 id="定义函数："><a href="#定义函数：" class="headerlink" title="定义函数："></a>定义函数：</h3><p>关键字： def, 依次写出函数名、括号、括号中的参数和冒号:,然后，在缩进块中编写函数体，函数的返回值用return语句返回<br>类比js: 关键字function ，后面都一致，然后把 冒号 换成 js中的 大括号 即可</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_abs</span><span class="params">(num)</span>:</span> </span><br><span class="line">    <span class="keyword">if</span> x &gt;= <span class="number">10</span>: </span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line">    <span class="keyword">else</span>: </span><br><span class="line">        <span class="keyword">return</span> -x</span><br></pre></td></tr></table></figure>
 
-<p>执行函数： 相比于Python，js的函数执行比较简单，定义完函数后，直接用函数名字加一堆小括号就可以调用当前函数，但Python貌似得先导入该函数，才可以调用</p>
+<p>执行函数： 相比于Python，js的函数执行比较简单，定义完函数后，直接用函数名字加一对小括号就可以调用当前函数，但Python貌似得先导入该函数，才可以调用</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> test <span class="keyword">import</span> my_abs</span><br><span class="line">my_abs(<span class="number">-1</span>)</span><br></pre></td></tr></table></figure>
 
 <h3 id="pass关键字"><a href="#pass关键字" class="headerlink" title="pass关键字"></a>pass关键字</h3><p>pass语句啥都不做，就和0一样，用来占位的。让程序可以跑起来。可以理解为斗地主时，你的牌大不过上家的，你就可以大吼一声： pass/过，让单线程的斗地主可以走下去，而不至于卡在这里，让队友喷你</p>
@@ -868,7 +868,7 @@
 
 <h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><p>模块是一组Python代码的集合，可以使用其他模块，也可以被其他模块使用<br>创建自己的模块时，要注意：<br>模块名要遵循Python变量命名规范，不要使用中文、特殊字符；<br>模块名不要和系统模块名冲突，最好先查看系统是否已存在该模块，检查方法是在Python交互环境执行import abc，若成功则说明系统存在此模块  </p>
 <ol>
-<li><p>作用域<br><strong>xxx</strong> 变量是特殊变量，可以被直接引用，但是有特殊用途<br>_xxx或__xxx这样的函数或者变量是非公开的（private），不应该被直接引用</p>
+<li><p>作用域<br>__xxx__ 变量是特殊变量，可以被直接引用，但是有特殊用途<br>_xxx或__xxx这样的函数或者变量是非公开的（private），不应该被直接引用</p>
 </li>
 <li><p>第三方模块安装</p>
 </li>
@@ -904,7 +904,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// js</span></span><br><span class="line"><span class="keyword">const</span> xioaming = <span class="keyword">new</span> Student(arg)</span><br></pre></td></tr></table></figure>
 
 <p><strong>看到这</strong>，终于深刻体会到了为啥class一定要首字母大写！js里面可能体会不深，因为有 <em>new</em> 关键字在<em>class<em>之前，而py里面，如果不区分，那么很容易搞混</em>class</em> 和 <em>function</em>   </p>
-<p>特殊方法<em><strong>init</strong></em> 方法的第一个参数永远是self，表示创建的实例本身，因此，在<strong>init</strong>方法内部，就可以把各种属性绑定到self，因为self就指向创建的实例本身。<br><em>diff:</em>和普通的函数相比，在类中定义的函数只有一点不同，就是第一个参数永远是实例变量self，并且，调用时，不用传递该参数。</p>
+<p>特殊方法<em>__init__</em> 方法的第一个参数永远是self，表示创建的实例本身，因此，在<strong>init</strong>方法内部，就可以把各种属性绑定到self，因为self就指向创建的实例本身。<br><em>diff:</em>和普通的函数相比，在类中定义的函数只有一点不同，就是第一个参数永远是实例变量self，并且，调用时，不用传递该参数。</p>
 <h3 id="访问限制"><a href="#访问限制" class="headerlink" title="访问限制"></a>访问限制</h3><p>外部代码还是可以自由地修改一个实例的name、score属性：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xiaoming = Student(<span class="string">'xiaoming'</span>, <span class="number">95</span>)</span><br><span class="line">xioaming.score = <span class="number">12</span>    <span class="comment">#可以修改实例的属性</span></span><br></pre></td></tr></table></figure>
 
@@ -913,7 +913,7 @@
 
 <p>这样在外部就无法访问到内部的私有变量了，只能调用内部方法来访问。·····<del>~</del>真的是这样的吗？（手动滑稽.jpg）,当然不是啦，<strong><em>之所有我们无法从外部访问到<strong>name,是因为Python解释器把该变量变成了 _Student</strong>name ,所以呢，我们可以通过 短线 加 类名 加变量名继续来访问该私有变量</em></strong>吃饱了撑着了吗？哈哈</p>
 <h3 id="继承和多态"><a href="#继承和多态" class="headerlink" title="继承和多态"></a>继承和多态</h3><p>有点C++的感觉了，毕竟js是没有显示的多态的<del>~</del>   </p>
-<p>等等，我理解完了，凉凉打脸。Python的多态指的是基类和子类拥有同样的方法时，子类覆盖基类………………尼玛，按照js来说，这就是原型链的查找基本原理啊，先在自己内部找，找不到了就顺着原型链往上查找，一毛一样的……….<br>把py中的class理解为一种数据结构，这个数据结构和py自带的list,tuple,dict 没有任何区别。那么 <em>isinstance()</em> 不就可以用了</p>
+<p>等等，我理解完了，凉凉打脸。Python的多态指的是基类和子类拥有同样的方法时，子类覆盖基类………………emmmm，按照js来说，这就是原型链的查找基本原理啊，先在自己内部找，找不到了就顺着原型链往上查找，一毛一样的……….<br>把py中的class理解为一种数据结构，这个数据结构和py自带的list,tuple,dict 没有任何区别。那么 <em>isinstance()</em> 不就可以用了</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">xiaoming = Student(<span class="string">'xiaoming'</span>)</span><br><span class="line">isinstance(xiaoming, Student)   <span class="comment"># True  isinstance可以理解为派生</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Pupil</span><span class="params">(Student)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">xiaoxioa = Pupil()</span><br><span class="line">isinstance(xiaoxiao, Student)   <span class="comment"># True  隔代的也算派生哦</span></span><br></pre></td></tr></table></figure>
 
 <p><em>鸭子模型</em> 动态语言的鸭子类型特点决定了继承不像静态语言那样是必须的。</p>
@@ -927,7 +927,7 @@
 <h3 id="实例属性和类属性"><a href="#实例属性和类属性" class="headerlink" title="实例属性和类属性"></a>实例属性和类属性</h3><p>总结一句话，就是class的类属性各个实例都会访问到，实例的实例属性各自相互独立。<br>可以把这两个概念理解为 JS 基类中的方法，子类都会顺着原型链找到并访问到。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></span><br><span class="line">    school = <span class="string">'hantaiMiddleSchool'</span>   <span class="comment">#所有实例都可以访问到</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="面向对象高级编程"><a href="#面向对象高级编程" class="headerlink" title="面向对象高级编程"></a>面向对象高级编程</h2><h3 id="slots"><a href="#slots" class="headerlink" title="slots"></a><strong>slots</strong></h3><p>slots的作用就是动态给class添加属性的一个约束，否则在class类建立完毕后，运行代码的时候动态随意绑定属性不就乱套了，需要一个约束，职责就是 <em>slots</em><br><em>slots</em> 英文： 插槽。在Vue中使用的广泛，可以理解为在这预先给你留了个位置，以后想用的时候可以用，没有留这个位置的话，以后相用都用不了，可以理解为图书馆同学帮你<em>占座</em></p>
+<h2 id="面向对象高级编程"><a href="#面向对象高级编程" class="headerlink" title="面向对象高级编程"></a>面向对象高级编程</h2><h3 id="slots"><a href="#slots" class="headerlink" title="__slots__"></a>__slots__</h3><p>slots的作用就是动态给class添加属性的一个约束，否则在class类建立完毕后，运行代码的时候动态随意绑定属性不就乱套了，需要一个约束，职责就是 <em>slots</em><br><em>slots</em> 英文： 插槽。在Vue中使用的广泛，可以理解为在这预先给你留了个位置，以后想用的时候可以用，没有留这个位置的话，以后相用都用不了，可以理解为图书馆同学帮你<em>占座</em></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#python</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></span><br><span class="line">    __slots__ = (<span class="string">'name'</span>, <span class="string">'age'</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = Student()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.name = <span class="string">'xiaoming'</span>    <span class="comment"># 可以绑定成功</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.score = <span class="number">98</span>           <span class="comment"># 会报错，“唉，这位置有人了，你坐不了（手动滑稽.jpg）”</span></span><br></pre></td></tr></table></figure>
 
 <p>PS : 使用<strong>slots</strong>要注意，<strong>slots</strong>定义的属性仅对当前类实例起作用，对继承的子类是不起作用  </p>
@@ -941,7 +941,7 @@
 <h3 id="多重继承"><a href="#多重继承" class="headerlink" title="多重继承"></a>多重继承</h3><p><strong>关键字</strong>：一个子类可以拥有多个基类、mixin<br>class需要新的功能，只需要在继承一个基类就可以了，<em>通常，主线都是单一继承下来的 *  为了更好地看出继承关系，我们把主线之外需要继承的基类命名为 <em>Mixin</em>，这样的的设计通常称为 *Mixin</em></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ChineseMixin</span><span class="params">(Person)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ChinaPuple</span><span class="params">(Person, ChineseMixin)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="定制类"><a href="#定制类" class="headerlink" title="定制类"></a>定制类</h3><p><strong>重点：</strong>前后双下划线的变量是特殊变量，py有特殊用途的！！<br><strong>slots</strong><br><strong>len</strong>()<br><strong>str</strong><br><strong>repr</strong><br><strong>iter</strong><br><strong>getitem</strong><br><strong>setitem</strong><br><strong>getattr</strong><br><strong>call</strong><br>上面罗列的方法未查看相关作用，以后需要用到在查看不迟，就最后一个 <strong>call</strong> ,在js 中调用自身的有 arguments.callee()</p>
+<h3 id="定制类"><a href="#定制类" class="headerlink" title="定制类"></a>定制类</h3><p><strong>重点：</strong>前后双下划线的变量是特殊变量，py有特殊用途的！！<br>__slots__<br>__len__()<br>__str__<br>__repr__<br>__iter__<br>__getitem__<br>__setitem__<br>__getattr__<br>__call__<br>上面罗列的方法未查看相关作用，以后需要用到在查看不迟，就最后一个 __call__ ,在js 中调用自身的有 arguments.callee()</p>
 <h3 id="枚举类"><a href="#枚举类" class="headerlink" title="枚举类"></a>枚举类</h3><p>…持续更新…….</p>
 
           
