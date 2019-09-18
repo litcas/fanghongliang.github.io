@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Fanghongliang&#39;s blog">
 <meta property="og:description" content="desc : 根据实际业务遇到的情况总结一个Git处理问题手册，包括但不限于分支新建、分支合并、分支合并冲突、dist文件冲突、版本回退等。命名规范   标记 解释    feat 新功能   fix 修补bug   docs 文档   style 格式，不影响代码   refactor 重构，不添加新功能，也非修补bug   test 增加测试   chore 构建过程或辅助工程变动   sco">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-11T08:11:11.215Z">
+<meta property="og:updated_time" content="2019-09-18T08:07:04.857Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git">
 <meta name="twitter:description" content="desc : 根据实际业务遇到的情况总结一个Git处理问题手册，包括但不限于分支新建、分支合并、分支合并冲突、dist文件冲突、版本回退等。命名规范   标记 解释    feat 新功能   fix 修补bug   docs 文档   style 格式，不影响代码   refactor 重构，不添加新功能，也非修补bug   test 增加测试   chore 构建过程或辅助工程变动   sco">
@@ -380,8 +380,8 @@
 <td>用于说明commit影响的范围</td>
 </tr>
 </tbody></table>
-<h4 id="dist冲突："><a href="#dist冲突：" class="headerlink" title="dist冲突："></a>dist冲突：</h4><p>在分支上解决业务之后需要merge到master分支，master分支已经被人在其他分支写了业务并merge过了，我们此时merge到master上，git pull 拉下来最新的代码，在进行merge，必然会冲突。index.htlm 打包文件会冲突。<br>解决： 在master分支上，保留自己的 index.html 文件，提交。冲突的其他文件也一并提交，之后一定要再次 build master分支！！！！！，否则，你的index.html 打包文件是不包含别人的业务的。</p>
-<h4 id="文件大小写"><a href="#文件大小写" class="headerlink" title="文件大小写"></a>文件大小写</h4><p>Windows对大小写不敏感，git对大小写不敏感，需要修改文件名的大小写，实际修改了git却不会生效的，解决：  </p>
+<h4 id="Vue-dist冲突："><a href="#Vue-dist冲突：" class="headerlink" title="Vue-dist冲突："></a>Vue-dist冲突：</h4><p>在分支上解决业务之后需要merge到master分支，master分支已经被人在其他分支写了业务并merge过了，我们此时merge到master上，git pull 拉下来最新的代码，在进行merge，必然会冲突。index.htlm 打包文件会冲突。<br>解决： 在master分支上，保留自己的 index.html 文件，提交。冲突的其他文件也一并提交，之后一定要再次 build master分支！！！！！，否则，你的index.html 打包文件是不包含别人的业务的。</p>
+<h4 id="修改文件大小写"><a href="#修改文件大小写" class="headerlink" title="修改文件大小写"></a>修改文件大小写</h4><p>Windows对大小写不敏感，git对大小写不敏感，需要修改文件名的大小写，实际修改了git却不会生效的，解决：  </p>
 <ol>
 <li>复制此文件到其他地方备份</li>
 <li>删除项目中的该文件</li>
@@ -439,7 +439,31 @@
 </tr>
 </tbody></table>
 <p>保存，然后继续修改了该文件，此时再用 <em>git stash pop</em> 或 <em>git stash apply</em> 恢复之前的保存，可能会出现冲突。此时使用该命令会创建一个分支然后在创建的分支上把保存的记录恢复出来，避免冲突。</p>
-<p>PS ： <em>git stash</em> 保存的修改可以跨分支应用。例如：在 <em>develop<em>分支上做了修改， *git stash</em>保存，切换到 *master</em> 分支，使用 <em>pop</em> 或 <em>apply</em> 拉出来保存，这样就可以把 <em>develop</em> 分支上修改的内容迁移到 <em>master</em> 上，解决冲突可能会遇到。</p>
+<p>PS ： <em>git stash</em> 保存的修改可以跨分支应用。例如：在 <em>develop<em>分支上做了修改， *git stash</em>保存，切换到 *master</em> 分支，使用 <em>pop</em> 或 <em>apply</em> 拉出来保存，这样就可以把 <em>develop</em> 分支上修改的内容迁移到 <em>master</em> 上，解决冲突可能会遇到。  </p>
+<h4 id="git-部分命令"><a href="#git-部分命令" class="headerlink" title="git 部分命令"></a>git 部分命令</h4><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git reset HEAD</td>
+<td>放弃暂存区的修改（已经add,未commit）</td>
+</tr>
+<tr>
+<td>git checkout – *</td>
+<td>放弃本地修改（未commit）</td>
+</tr>
+<tr>
+<td>git checkout -b dev</td>
+<td>创建dev分支</td>
+</tr>
+<tr>
+<td>git branch -d dev</td>
+<td>删除dev分支</td>
+</tr>
+</tbody></table>
 
       
     </div>
@@ -590,7 +614,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#desc-根据实际业务遇到的情况总结一个Git处理问题手册，包括但不限于分支新建、分支合并、分支合并冲突、dist文件冲突、版本回退等。"><span class="nav-number">1.</span> <span class="nav-text">desc : 根据实际业务遇到的情况总结一个Git处理问题手册，包括但不限于分支新建、分支合并、分支合并冲突、dist文件冲突、版本回退等。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#命名规范"><span class="nav-number">1.1.</span> <span class="nav-text">命名规范</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dist冲突："><span class="nav-number">1.2.</span> <span class="nav-text">dist冲突：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件大小写"><span class="nav-number">1.3.</span> <span class="nav-text">文件大小写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-stash"><span class="nav-number">1.4.</span> <span class="nav-text">git stash</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#desc-根据实际业务遇到的情况总结一个Git处理问题手册，包括但不限于分支新建、分支合并、分支合并冲突、dist文件冲突、版本回退等。"><span class="nav-number">1.</span> <span class="nav-text">desc : 根据实际业务遇到的情况总结一个Git处理问题手册，包括但不限于分支新建、分支合并、分支合并冲突、dist文件冲突、版本回退等。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#命名规范"><span class="nav-number">1.1.</span> <span class="nav-text">命名规范</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue-dist冲突："><span class="nav-number">1.2.</span> <span class="nav-text">Vue-dist冲突：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改文件大小写"><span class="nav-number">1.3.</span> <span class="nav-text">修改文件大小写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-stash"><span class="nav-number">1.4.</span> <span class="nav-text">git stash</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-部分命令"><span class="nav-number">1.5.</span> <span class="nav-text">git 部分命令</span></a></li></ol></li></ol></div>
             
 
           </div>
