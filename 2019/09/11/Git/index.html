@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Fanghongliang&#39;s blog">
 <meta property="og:description" content="desc : 根据实际业务遇到的情况总结一个Git处理问题手册，包括但不限于分支新建、分支合并、分支合并冲突、dist文件冲突、版本回退等。命名规范   标记 解释    feat 新功能   fix 修补bug   docs 文档   style 格式，不影响代码   refactor 重构，不添加新功能，也非修补bug   test 增加测试   chore 构建过程或辅助工程变动   sco">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-19T12:08:25.675Z">
+<meta property="og:updated_time" content="2019-09-23T08:37:39.106Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git">
 <meta name="twitter:description" content="desc : 根据实际业务遇到的情况总结一个Git处理问题手册，包括但不限于分支新建、分支合并、分支合并冲突、dist文件冲突、版本回退等。命名规范   标记 解释    feat 新功能   fix 修补bug   docs 文档   style 格式，不影响代码   refactor 重构，不添加新功能，也非修补bug   test 增加测试   chore 构建过程或辅助工程变动   sco">
@@ -350,8 +350,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-19T20:08:25+08:00">
-                2019-09-19
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-23T16:37:39+08:00">
+                2019-09-23
               </time>
             
           </span>
@@ -400,7 +400,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  893
+                  1.1k
                 </span>
               
 
@@ -416,7 +416,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -567,6 +567,19 @@
 </tbody></table>
 <h4 id="撤销线上仓库的push"><a href="#撤销线上仓库的push" class="headerlink" title="撤销线上仓库的push"></a>撤销线上仓库的push</h4><p>适用于错误的push后没有他人再次push</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --soft &lt;commitHash&gt;</span><br><span class="line">$ git push --force</span><br></pre></td></tr></table></figure>
+
+<h4 id="git-reset-revert"><a href="#git-reset-revert" class="headerlink" title="git reset / revert"></a>git reset / revert</h4><p>git reset 本质即把指针 HEAD 指向某一个 commit<br>git revert 本质不算是回滚，是反做，反向操作commit。正常情况下，每一次操作文件后会让 Git 时间线往前走一步，revert反向操作某一个commit 记录，并生成一个新的  commit 来反做 </p>
+<h4 id="配置别名"><a href="#配置别名" class="headerlink" title="配置别名"></a>配置别名</h4><p>懒，是人类进步的原动力！<br>长命令的别名配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global alias.st status</span><br></pre></td></tr></table></figure>
+
+<p>看一个丧心病狂的别名配置  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global alias.lg &quot;log --color --graph --pretty=format:&apos;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&apos; --abbrev-commit&quot;</span><br></pre></td></tr></table></figure>
+
+<p>每个仓库的Git配置文件都放在.git/config文件中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ cat .git/config </span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">[branch &quot;master&quot;]</span><br><span class="line">    remote = origin</span><br><span class="line">    merge = refs/heads/master</span><br><span class="line">[alias]</span><br><span class="line">    last = log -1       //命令作用区域</span><br></pre></td></tr></table></figure>
+
+<p>配置别名也可以直接修改这个文件↑</p>
+
       
     </div>
     
@@ -729,7 +742,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -740,7 +753,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -812,7 +825,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#desc-根据实际业务遇到的情况总结一个Git处理问题手册，包括但不限于分支新建、分支合并、分支合并冲突、dist文件冲突、版本回退等。"><span class="nav-number">1.</span> <span class="nav-text">desc : 根据实际业务遇到的情况总结一个Git处理问题手册，包括但不限于分支新建、分支合并、分支合并冲突、dist文件冲突、版本回退等。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#命名规范"><span class="nav-number">1.1.</span> <span class="nav-text">命名规范</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue-dist冲突："><span class="nav-number">1.2.</span> <span class="nav-text">Vue-dist冲突：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改文件大小写"><span class="nav-number">1.3.</span> <span class="nav-text">修改文件大小写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-stash"><span class="nav-number">1.4.</span> <span class="nav-text">git stash</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-部分命令"><span class="nav-number">1.5.</span> <span class="nav-text">git 部分命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#撤销线上仓库的push"><span class="nav-number">1.6.</span> <span class="nav-text">撤销线上仓库的push</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#desc-根据实际业务遇到的情况总结一个Git处理问题手册，包括但不限于分支新建、分支合并、分支合并冲突、dist文件冲突、版本回退等。"><span class="nav-number">1.</span> <span class="nav-text">desc : 根据实际业务遇到的情况总结一个Git处理问题手册，包括但不限于分支新建、分支合并、分支合并冲突、dist文件冲突、版本回退等。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#命名规范"><span class="nav-number">1.1.</span> <span class="nav-text">命名规范</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue-dist冲突："><span class="nav-number">1.2.</span> <span class="nav-text">Vue-dist冲突：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改文件大小写"><span class="nav-number">1.3.</span> <span class="nav-text">修改文件大小写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-stash"><span class="nav-number">1.4.</span> <span class="nav-text">git stash</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-部分命令"><span class="nav-number">1.5.</span> <span class="nav-text">git 部分命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#撤销线上仓库的push"><span class="nav-number">1.6.</span> <span class="nav-text">撤销线上仓库的push</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-reset-revert"><span class="nav-number">1.7.</span> <span class="nav-text">git reset / revert</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置别名"><span class="nav-number">1.8.</span> <span class="nav-text">配置别名</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -846,7 +859,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">13.4k</span>
+    <span title="Site words total count">13.6k</span>
   
 </div>
 
