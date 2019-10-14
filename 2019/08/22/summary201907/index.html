@@ -90,7 +90,7 @@
 <meta property="og:image" content="https://i.postimg.cc/CLkPBwdb/1394956-20190624191512382-153916679.png">
 <meta property="og:image" content="https://i.postimg.cc/8zHbMHWb/1394956-20190726100326596-647701209.png">
 <meta property="og:image" content="https://i.postimg.cc/yYq9NpdG/1394956-20190620144053393-461267571.png">
-<meta property="og:updated_time" content="2019-09-23T07:49:13.429Z">
+<meta property="og:updated_time" content="2019-10-14T04:22:31.529Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="七月份项目自我总结">
 <meta name="twitter:description" content="序言小程序： 相亲小红圈+tool： wepy 传送门：[ wepy ]  https://tencent.github.io/wepy/document.html#/[ Vue ]  https://cn.vuejs.org/[ ES6 ]  http://es6.ruanyifeng.com/[ git ]  https://www.liaoxuefeng.com/   七月份结束，项目上线，">
@@ -354,8 +354,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-23T15:49:13+08:00">
-                2019-09-23
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-14T12:22:31+08:00">
+                2019-10-14
               </time>
             
           </span>
@@ -404,7 +404,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3.6k
+                  3.9k
                 </span>
               
 
@@ -420,7 +420,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  16
+                  17
                 </span>
               
             </div>
@@ -452,7 +452,75 @@
 <p>wepy属于类Vue写法，要在wepy中使用异步操作（async/await）需要在工程的app.way入口文件中constructor函数中注册:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constructor</span> () &#123;</span><br><span class="line">  <span class="keyword">super</span>()</span><br><span class="line">  <span class="keyword">this</span>.use(<span class="string">'requestfix'</span>)</span><br><span class="line">  <span class="keyword">this</span>.use(<span class="string">'promisify'</span>)            <span class="comment">/*←手动添加这个*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>版本更新代码，一般较为固定，直接复制在 <em>onLaunch</em> 生命周期内  </p>
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期:"></a>生命周期:</h2><h3 id="应用生命周期"><a href="#应用生命周期" class="headerlink" title="应用生命周期"></a>应用生命周期</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>type</th>
+<th>描述</th>
+<th>触发时机</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>onLaunch</td>
+<td>Function</td>
+<td>生命周期函数–监听小程序初始化</td>
+<td>用户首次打开小程序，触发 onLaunch（全局只触发一次）</td>
+</tr>
+<tr>
+<td>onShow</td>
+<td>Function</td>
+<td>生命周期函数–监听小程序显示</td>
+<td>当小程序启动，或从后台进入前台显示，会触发 onShow</td>
+</tr>
+<tr>
+<td>onHide</td>
+<td>Function</td>
+<td>生命周期函数–监听小程序隐藏</td>
+<td>当小程序从前台进入后台，会触发 onHide</td>
+</tr>
+</tbody></table>
+<h3 id="页面生命周期"><a href="#页面生命周期" class="headerlink" title="页面生命周期"></a>页面生命周期</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>type</th>
+<th>描述</th>
+<th>触发时机</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>onLoad</td>
+<td>Function</td>
+<td>监听页面加载，一个页面只会调用一次</td>
+<td>小程序注册完成后，加载页面，触发onLoad方法,参数可以获取wx.navigateTo和wx.redirectTo及<navigator>中的 query参数</navigator></td>
+</tr>
+<tr>
+<td>onReady</td>
+<td>Function</td>
+<td>监听页面初次渲染完成,代表页面已经准备妥当，可以和视图层进行交互</td>
+<td>首次显示页面，会触发onReady方法，渲染页面元素和样式，一个页面只会调用一次</td>
+</tr>
+<tr>
+<td>onShow</td>
+<td>Function</td>
+<td>监听页面显示,当redirectTo或navigateBack的时候调用</td>
+<td>当小程序有后台进入到前台运行或重新进入页面时，触发onShow方法。</td>
+</tr>
+<tr>
+<td>onHide</td>
+<td>Function</td>
+<td>监听页面隐藏,当navigateTo或底部tab切换时调用</td>
+<td>当小程序后台运行或跳转到其他页面时，触发onHide方法</td>
+</tr>
+<tr>
+<td>onUnload</td>
+<td>Function</td>
+<td>监听页面卸载</td>
+<td>当使用重定向方法wx.redirectTo(OBJECT)或关闭当前页返回上一页wx.navigateBack()，触发onUnload。</td>
+</tr>
+</tbody></table>
+<h2 id="版本更新"><a href="#版本更新" class="headerlink" title="版本更新"></a>版本更新</h2><p>版本更新代码，一般较为固定，直接复制在 <em>onLaunch</em> 生命周期内  </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(wx.canIUse(<span class="string">'getUpdateManager'</span>))&#123;</span><br><span class="line">  <span class="keyword">const</span> updateManager = wx.getUpdateManager();</span><br><span class="line">  updateManager.onCheckForUpdate(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(res.hasUpdate)&#123;</span><br><span class="line">      updateManager.onUpdateReady(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">        wx.showModal(&#123;</span><br><span class="line">          title: <span class="string">'更新提示'</span>,</span><br><span class="line">          content: <span class="string">'新版本已经准备好，是否重启应用？'</span>,</span><br><span class="line">          success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(res.confirm)&#123;</span><br><span class="line">              updateManager.applyUpdate()</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">      updateManager.onUpdateFailed(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        wx.showModal(&#123;</span><br><span class="line">          title: <span class="string">'已经有新版本了哟~'</span>,</span><br><span class="line">          content: <span class="string">'新版本已经上线啦~，请您删除当前小程序，重新搜索打开哟~'</span></span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="content目录"><a href="#content目录" class="headerlink" title="content目录"></a>content目录</h2><h2 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h2><p>  页面业务逻辑有需要用到倒计时功能，如下图。  </p>
@@ -764,7 +832,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#序言"><span class="nav-number">1.</span> <span class="nav-text">序言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#小程序：-相亲小红圈"><span class="nav-number">1.1.</span> <span class="nav-text">小程序： 相亲小红圈+</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tool：-wepy"><span class="nav-number">1.2.</span> <span class="nav-text">tool： wepy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传送门："><span class="nav-number">1.3.</span> <span class="nav-text">传送门：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内容"><span class="nav-number">2.</span> <span class="nav-text">内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#content目录"><span class="nav-number">2.1.</span> <span class="nav-text">content目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定时器"><span class="nav-number">2.2.</span> <span class="nav-text">定时器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组件传值"><span class="nav-number">2.3.</span> <span class="nav-text">组件传值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#token判断"><span class="nav-number">2.4.</span> <span class="nav-text">token判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#formid"><span class="nav-number">2.5.</span> <span class="nav-text">formid</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#支付"><span class="nav-number">2.6.</span> <span class="nav-text">支付</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片上传（七牛云）"><span class="nav-number">2.7.</span> <span class="nav-text">图片上传（七牛云）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微信消息聊天布局"><span class="nav-number">2.8.</span> <span class="nav-text">微信消息聊天布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS注意点"><span class="nav-number">2.9.</span> <span class="nav-text">CSS注意点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#async-await"><span class="nav-number">2.10.</span> <span class="nav-text">async/await</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ios-android机型区别"><span class="nav-number">2.11.</span> <span class="nav-text">ios/android机型区别</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#序言"><span class="nav-number">1.</span> <span class="nav-text">序言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#小程序：-相亲小红圈"><span class="nav-number">1.1.</span> <span class="nav-text">小程序： 相亲小红圈+</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tool：-wepy"><span class="nav-number">1.2.</span> <span class="nav-text">tool： wepy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传送门："><span class="nav-number">1.3.</span> <span class="nav-text">传送门：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内容"><span class="nav-number">2.</span> <span class="nav-text">内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#生命周期"><span class="nav-number">2.1.</span> <span class="nav-text">生命周期:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#应用生命周期"><span class="nav-number">2.1.1.</span> <span class="nav-text">应用生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#页面生命周期"><span class="nav-number">2.1.2.</span> <span class="nav-text">页面生命周期</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版本更新"><span class="nav-number">2.2.</span> <span class="nav-text">版本更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#content目录"><span class="nav-number">2.3.</span> <span class="nav-text">content目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定时器"><span class="nav-number">2.4.</span> <span class="nav-text">定时器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组件传值"><span class="nav-number">2.5.</span> <span class="nav-text">组件传值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#token判断"><span class="nav-number">2.6.</span> <span class="nav-text">token判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#formid"><span class="nav-number">2.7.</span> <span class="nav-text">formid</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#支付"><span class="nav-number">2.8.</span> <span class="nav-text">支付</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片上传（七牛云）"><span class="nav-number">2.9.</span> <span class="nav-text">图片上传（七牛云）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微信消息聊天布局"><span class="nav-number">2.10.</span> <span class="nav-text">微信消息聊天布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS注意点"><span class="nav-number">2.11.</span> <span class="nav-text">CSS注意点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#async-await"><span class="nav-number">2.12.</span> <span class="nav-text">async/await</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ios-android机型区别"><span class="nav-number">2.13.</span> <span class="nav-text">ios/android机型区别</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -798,7 +866,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">14k</span>
+    <span title="Site words total count">14.4k</span>
   
 </div>
 
