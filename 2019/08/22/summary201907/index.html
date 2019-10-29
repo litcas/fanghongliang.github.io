@@ -90,7 +90,7 @@
 <meta property="og:image" content="https://i.postimg.cc/CLkPBwdb/1394956-20190624191512382-153916679.png">
 <meta property="og:image" content="https://i.postimg.cc/8zHbMHWb/1394956-20190726100326596-647701209.png">
 <meta property="og:image" content="https://i.postimg.cc/yYq9NpdG/1394956-20190620144053393-461267571.png">
-<meta property="og:updated_time" content="2019-10-24T03:33:13.825Z">
+<meta property="og:updated_time" content="2019-10-29T06:52:16.529Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="七月份项目自我总结">
 <meta name="twitter:description" content="序言小程序： 相亲小红圈+tool： wepy 传送门：[ wepy ]  https://tencent.github.io/wepy/document.html#/[ Vue ]  https://cn.vuejs.org/[ ES6 ]  http://es6.ruanyifeng.com/[ git ]  https://www.liaoxuefeng.com/   七月份结束，项目上线，">
@@ -354,8 +354,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-10-24T11:33:13+08:00">
-                2019-10-24
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-29T14:52:16+08:00">
+                2019-10-29
               </time>
             
           </span>
@@ -404,7 +404,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3.9k
+                  4k
                 </span>
               
 
@@ -576,7 +576,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pageScrollToBottom( msgLength ) &#123;               <span class="comment">//在页面需要进行变化时调用</span></span><br><span class="line">    wx.createSelectorQuery().select(<span class="string">'#contentBox'</span>).boundingClientRect(<span class="function"><span class="keyword">function</span>(<span class="params">rect</span>)</span>&#123;      <span class="comment">// 使页面滚动到底部   </span></span><br><span class="line">        log(<span class="string">'rect'</span>, rect)   </span><br><span class="line">        wx.pageScrollTo(&#123;</span><br><span class="line">            scrollTop: rect.bottom + msgLength*<span class="number">60</span>,</span><br><span class="line">            duration: <span class="number">80</span></span><br><span class="line">        &#125;)</span><br><span class="line">        log(<span class="string">'msgBox的下边界坐标： '</span>, msgLength )</span><br><span class="line">    &#125;).exec()  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>自己发送的消息数据可以直接压入本地数组 <em>talkContent</em> 内，Unshift()进入，得到“负负得正”效果，即数据反，布局反即可得到从底部排列的布局。对方的消息从服务器拉下来的时候，放入 <em>talkContent</em> 内前 <em>reverse()</em> 一下即可</p>
-<h2 id="CSS注意点"><a href="#CSS注意点" class="headerlink" title="CSS注意点"></a>CSS注意点</h2><p>CSS持续补充中……<br><code>word-break: break-all;    //换行文字，英文溢出</code><br><code>-webkit-overflow-scrolling: touch;  //ios端启用硬件加速，解决ios端滑动粘手</code><br><code>catchtouchmove=&#39;true&#39;    //模态框中添加，禁止页面滑动</code></p>
+<h2 id="CSS注意点"><a href="#CSS注意点" class="headerlink" title="CSS注意点"></a>CSS注意点</h2><p>CSS持续补充中……<br><code>word-break: break-all;    //换行文字，英文溢出</code><br><code>-webkit-overflow-scrolling: touch;  //ios端启用硬件加速，解决ios端滑动粘手</code><br><code>catchtouchmove=&#39;true&#39;    //模态框中添加，禁止页面滑动</code><br><code>circleDynamic:last-of-type   //特定类circleDynamic中最后一个元素</code><br><code>:nth-of-type(1/odd/even)  //选择特定元素下第几个元素</code></p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/* CSS 吸顶 */</span></span><br><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">sticky</span>;     </span><br><span class="line"><span class="selector-tag">top</span>: 0;</span><br></pre></td></tr></table></figure>
 
 <h2 id="async-await"><a href="#async-await" class="headerlink" title="async/await"></a>async/await</h2><p>异步编程的终极解决方案，在小程序内拿取code或者login时会用到，await可理解为求值！async可理解为搭配await的语法，如果异步函数去掉await，返回的一般是 <em>promise</em> 对象，需要手动去<em>reject</em> 和 <em>resolve</em> 。</p>
